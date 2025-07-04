@@ -17,10 +17,16 @@
                 'current' => request()->routeIs('dashboard.*'),
             ],
             [
+                'name' => 'Areas',
+                'icon' => 'presentation-chart-bar',
+                'url' => route('admin.areas.index'),
+                'current' => request()->routeIs('admin.areas.*'),
+            ],
+            [
                 'name' => 'Convenios',
                 'icon' => 'archive-box',
-                'url' => route('dashboard'),
-                'current' => request()->routeIs('dashboard.*'),
+                'url' => route('admin.convenios.index'),
+                'current' => request()->routeIs('admin.convenios.*'),
             ],
             [
                 'name' => 'Mapa',
@@ -48,10 +54,11 @@
                         'url' => route('dashboard'),
                     ],
                     [
-                        'name' => 'COCINA',
+                        'name' => 'Cocina',
                         'icon' => 'fire',
                         'url' => route('dashboard'),
                     ],
+                    
                 ],
             ],
             [
@@ -78,6 +85,7 @@
                 'url' => route('dashboard'),
                 'current' => request()->routeIs('dashboard.*'),
             ],
+            
         ],
     ];
 @endphp

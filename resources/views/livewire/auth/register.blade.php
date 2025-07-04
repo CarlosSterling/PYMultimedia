@@ -85,8 +85,14 @@ new #[Layout('components.layouts.auth')] class extends Component {
             viewable
         />
 
-        <div class="flex items-center justify-end">
-            <flux:button type="submit" variant="primary" class="w-full">
+        <div class="flex items-center justify-end space-x-4">
+            <a href="{{ url('/') }}">
+                <flux:button variant="outline" type="button">
+                    {{ __('Cancelar') }}
+                </flux:button>
+            </a>
+            
+            <flux:button variant="primary" type="submit" class="w-full">
                 {{ __('Crear cuenta') }}
             </flux:button>
         </div>
@@ -101,7 +107,7 @@ new #[Layout('components.layouts.auth')] class extends Component {
         <img 
             src="{{ asset('images/footer-shape.png') }}" 
             alt="Decoración inferior" 
-            class="w-full h-[100px] object-cover md:h-[100px] lg:h-[130px]"
+            class="w-full h-[100px] object-cover md:h-[100px] lg:h-[350px]"
         >
     </footer>
 </div>

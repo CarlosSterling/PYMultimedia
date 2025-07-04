@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Convenios;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -16,8 +17,14 @@ class DatabaseSeeder extends Seeder
         // User::factory(10)->create();
 
         User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+            'name' => 'Alaia Sterling',
+            'email' => 'Alaia@gmail.com',
+            'password' => bcrypt('12345678'),
+        ]);
+
+        Convenios::factory(7)->create([
+            'activo' => true,
+            'orden' => 1,
         ]);
     }
 }

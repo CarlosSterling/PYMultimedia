@@ -107,11 +107,18 @@ new #[Layout('components.layouts.auth')] class extends Component {
         <!-- Recordarme -->
         <flux:checkbox wire:model="remember" :label="__('Recuérdame')" />
 
-        <div class="flex items-center justify-end">
+        <div class="flex items-center justify-end space-x-4">
+            <a href="{{ url('/') }}">
+                <flux:button variant="outline" type="button">
+                    {{ __('Cancelar') }}
+                </flux:button>
+            </a>
+            
             <flux:button variant="primary" type="submit" class="w-full">
                 {{ __('Iniciar sesión') }}
             </flux:button>
         </div>
+        
     </form>
 
     @if (Route::has('register'))
@@ -128,7 +135,7 @@ new #[Layout('components.layouts.auth')] class extends Component {
         <img 
             src="{{ asset('images/footer-shape.png') }}" 
             alt="Decoración inferior" 
-            class="w-full h-[100px] object-cover md:h-[100px] lg:h-[130px]"
+            class="w-full h-[100px] object-cover md:h-[100px] lg:h-[350px]"
         >
     </footer>
 </div>
