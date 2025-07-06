@@ -18,5 +18,10 @@ class Areas extends Model
         'imagen',
         'estado',
     ];
+
+    public function programas()
+{
+    return $this->hasMany(Programas::class, 'area_id');
+}
 }
 

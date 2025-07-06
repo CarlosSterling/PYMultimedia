@@ -102,9 +102,10 @@ class ProgramasController extends Controller
         return redirect()->route('admin.programas.index')->with('success', 'Programa eliminado.');
     }
 
-    public function porArea(Areas $area)
-    {
-        $programas = $area->programas;
-        return view('admin.programas.index', compact('programas'));
-    }
+    public function porArea(\App\Models\Areas $area)
+{
+    $programas = $area->programas()->get(); // sin where('estado', true)
+    return view('admin.programas.index', compact('programas', 'area'));
+}
+
 }

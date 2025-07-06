@@ -1,8 +1,5 @@
 <?php
 
-use App\Http\Controllers\Admin\AreasController;
-use App\Http\Controllers\Admin\ConveniosController;
-use App\Http\Controllers\Admin\ProgramasController;
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
 
@@ -14,15 +11,7 @@ Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
 
-Route::patch('admin/convenios/{convenio}/estado', [ConveniosController::class, 'toggleEstado'])
-    ->name('admin.convenios.toggleEstado');
-
-Route::put('/admin/areas/{area}/estado', [AreasController::class, 'toggleEstado'])->name('admin.areas.estado');
-
-Route::resource('admin/programas', ProgramasController::class);
-
-
-
+// Rutas para usuarios autenticados (no admin)
 Route::middleware(['auth'])->group(function () {
     Route::redirect('settings', 'settings/profile');
 

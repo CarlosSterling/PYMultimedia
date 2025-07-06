@@ -25,8 +25,13 @@
             [
                 'name' => 'Programas',
                 'icon' => 'academic-cap',
-                'url' => route('admin.programas.index'),
-                'current' => request()->routeIs('admin.programas.*'),
+                'submenu' => \App\Models\Areas::where('estado', true)->get()->map(function ($area) {
+                    return [
+                        'name' => $area->nombre,
+                        'icon' => 'chevron-right',
+                        'url' => url('/admin/programas/area/' . $area->id),
+                    ];
+                })->toArray(),
             ],
             [
                 'name' => 'Convenios',
