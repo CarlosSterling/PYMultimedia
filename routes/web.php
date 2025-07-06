@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AreasController;
 use App\Http\Controllers\Admin\ConveniosController;
+use App\Http\Controllers\Admin\ProgramasController;
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
 
@@ -16,7 +17,10 @@ Route::view('dashboard', 'dashboard')
 Route::patch('admin/convenios/{convenio}/estado', [ConveniosController::class, 'toggleEstado'])
     ->name('admin.convenios.toggleEstado');
 
-    Route::put('/admin/areas/{area}/estado', [AreasController::class, 'toggleEstado'])->name('admin.areas.estado');
+Route::put('/admin/areas/{area}/estado', [AreasController::class, 'toggleEstado'])->name('admin.areas.estado');
+
+Route::resource('admin/programas', ProgramasController::class);
+
 
 
 Route::middleware(['auth'])->group(function () {

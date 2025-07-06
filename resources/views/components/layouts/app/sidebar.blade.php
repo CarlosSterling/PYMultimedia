@@ -23,6 +23,12 @@
                 'current' => request()->routeIs('admin.areas.*'),
             ],
             [
+                'name' => 'Programas',
+                'icon' => 'academic-cap',
+                'url' => route('admin.programas.index'),
+                'current' => request()->routeIs('admin.programas.*'),
+            ],
+            [
                 'name' => 'Convenios',
                 'icon' => 'archive-box',
                 'url' => route('admin.convenios.index'),
@@ -33,33 +39,6 @@
                 'icon' => 'map',
                 'url' => route('dashboard'),
                 'current' => request()->routeIs('dashboard.*'),
-            ],
-            [
-                'name' => 'Programas',
-                'icon' => 'academic-cap',
-                'submenu' => [
-                    [
-                        'name' => 'TIC',
-                        'icon' => 'computer-desktop',
-                        'url' => route('dashboard'),
-                    ],
-                    [
-                        'name' => 'PAE',
-                        'icon' => 'bug-ant',
-                        'url' => route('dashboard'),
-                    ],
-                    [
-                        'name' => 'Barismo',
-                        'icon' => 'rectangle-group',
-                        'url' => route('dashboard'),
-                    ],
-                    [
-                        'name' => 'Cocina',
-                        'icon' => 'fire',
-                        'url' => route('dashboard'),
-                    ],
-                    
-                ],
             ],
             [
                 'name' => 'Reglamento',
