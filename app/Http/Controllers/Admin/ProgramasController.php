@@ -104,7 +104,7 @@ class ProgramasController extends Controller
 
     public function porArea(\App\Models\Areas $area)
 {
-    $programas = $area->programas()->get(); // sin where('estado', true)
+    $programas = $area->programas()->get();
     return view('admin.programas.index', compact('programas', 'area'));
 }
 
