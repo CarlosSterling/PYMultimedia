@@ -1,19 +1,23 @@
 <?php
 
-use App\Http\Controllers\Admin\ConveniosController;
-use App\Http\Controllers\Admin\AreasController;
-use App\Http\Controllers\Admin\ProgramasController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\AreasController;
+use App\Http\Controllers\Admin\ConveniosController;
+use App\Http\Controllers\Admin\ProgramasController;
 
-Route::patch('convenios/{convenio}/estado', [ConveniosController::class, 'toggleEstado'])
-    ->name('convenios.toggleEstado');
+Route::middleware(['auth', 'verified', 'isAdmin'])
+    ->group(function () {
+        // Áreas
+        Route::put('areas/{area}/estado', [AreasController::class, 'toggleEstado'])->name('areas.estado');
+        Route::resource('areas', AreasController::class);
 
-Route::put('areas/{area}/estado', [AreasController::class, 'toggleEstado'])
-    ->name('areas.estado');
+        // Convenios
+        Route::patch('convenios/{convenio}/estado', [ConveniosController::class, 'toggleEstado'])->name('convenios.toggleEstado');
+        Route::resource('convenios', ConveniosController::class);
 
-Route::resource('convenios', ConveniosController::class);
-Route::resource('areas', AreasController::class);
-Route::resource('programas', ProgramasController::class);
+        // Programas
+        Route::get('programas/area/{area}', [ProgramasController::class, 'porArea'])->name('programas.porArea');
+        Route::resource('programas', ProgramasController::class);
 
-Route::get('programas/area/{area}', [ProgramasController::class, 'porArea'])
-    ->name('programas.porArea');
+        
+    });
