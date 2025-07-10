@@ -22,7 +22,6 @@ class RouteServiceProvider extends ServiceProvider
 
     // Rutas del panel de administración
     Route::middleware(['web', 'auth', 'verified', 'isAdmin'])
-        ->prefix('admin')         // URL: /admin/...
         ->group(base_path('routes/admin.php'));
 }
 

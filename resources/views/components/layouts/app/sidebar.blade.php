@@ -17,6 +17,12 @@
                 'current' => request()->routeIs('dashboard.*'),
             ],
             [
+                'name' => 'Usuarios',
+                'icon' => 'user-group',
+                'url' => route('admin.users.index'),
+                'current' => request()->routeIs('admin.users.*'),
+            ],
+            [
                 'name' => 'Areas',
                 'icon' => 'presentation-chart-bar',
                 'url' => route('admin.areas.index'),
@@ -54,8 +60,8 @@
             [
                 'name' => 'Instructivos',
                 'icon' => 'square-3-stack-3d',
-                'url' => route('dashboard'),
-                'current' => request()->routeIs('dashboard.*'),
+                'url' => route('admin.instructivos.index'),
+                'current' => request()->routeIs('admin.instructivos.*'),
             ],
             [
                 'name' => 'Beneficios',
@@ -69,7 +75,6 @@
                 'url' => route('dashboard'),
                 'current' => request()->routeIs('dashboard.*'),
             ],
-            
         ],
     ];
 @endphp
