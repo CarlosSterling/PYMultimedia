@@ -14,61 +14,64 @@
 
     {{-- Título --}}
     <div class="text-center mt-8">
-        <h1 class="text-4xl font-bold text-gray-800">Áreas Disponibles</h1>
+        <h1 class="text-4xl font-extrabold text-zinc-800 dark:text-white">Áreas Disponibles</h1>
     </div>
 
     {{-- Grid de tarjetas --}}
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 mt-10 px-4 max-w-7xl mx-auto">
         @forelse ($areas as $area)
-            <div class="group relative overflow-hidden rounded-xl shadow-lg bg-white transform transition duration-500 hover:scale-105">
+            <div class="group relative overflow-hidden rounded-2xl shadow-md bg-white dark:bg-zinc-800 transform transition duration-500 hover:scale-[1.02]">
 
-                {{-- Imagen con efecto de zoom --}}
+                {{-- Imagen con efecto zoom --}}
                 <div class="overflow-hidden">
                     <img src="{{ asset('storage/' . $area->imagen) }}" alt="{{ $area->nombre }}"
-                        class="w-full h-[450px] object-cover transition-transform duration-500 group-hover:scale-110">
+                         class="w-full h-[400px] object-cover transition-transform duration-500 group-hover:scale-110">
                 </div>
 
-                {{-- Contenedor con nombre --}}
-                <div class="p-4 text-center">
-                    <h2 class="text-xl font-bold text-gray-900">{{ $area->nombre }}</h2>
+                {{-- Contenido principal --}}
+                <div class="p-5 text-center">
+                    <h2 class="text-xl font-bold text-zinc-900 dark:text-white">{{ $area->nombre }}</h2>
                 </div>
 
                 {{-- Footer oculto que aparece al hacer hover --}}
-                <div class="absolute bottom-0 left-0 right-0 bg-white bg-opacity-95 px-4 py-3 transform translate-y-full group-hover:translate-y-0 transition duration-500 ease-in-out">
+                <div class="absolute inset-x-0 bottom-0 bg-white dark:bg-zinc-900/90 backdrop-blur px-4 py-4 translate-y-full group-hover:translate-y-0 transition duration-500 ease-in-out">
 
                     {{-- Estado --}}
                     <div class="mb-2 text-center">
                         @if ($area->estado)
-                            <span class="inline-block bg-green-500 text-white text-xs font-semibold px-2 py-1 rounded">
+                            <span class="inline-block bg-green-600 text-white text-xs font-semibold px-2 py-1 rounded-full">
                                 Activa
                             </span>
                         @else
-                            <span class="inline-block bg-red-500 text-white text-xs font-semibold px-2 py-1 rounded">
+                            <span class="inline-block bg-zinc-500 text-white text-xs font-semibold px-2 py-1 rounded-full">
                                 Inactiva
                             </span>
                         @endif
                     </div>
 
-                    <p class="text-sm text-gray-700 text-center mb-3">{{ Str::limit($area->descripcion, 80) }}</p>
+                    {{-- Descripción --}}
+                    <p class="text-sm text-zinc-700 dark:text-zinc-200 text-center mb-4">
+                        {{ Str::limit($area->descripcion, 80) }}
+                    </p>
 
                     {{-- Acciones --}}
                     <div class="flex justify-center gap-2">
                         <a href="{{ route('admin.areas.show', $area) }}"
-                            class="px-3 py-1 bg-green-600 text-white text-sm rounded hover:bg-green-700 transition">
+                           class="px-4 py-1.5 text-sm font-medium bg-green-700 text-white rounded-lg hover:bg-green-800 transition">
                             Ver más
                         </a>
 
                         <a href="{{ route('admin.areas.edit', $area) }}"
-                            class="px-3 py-1 bg-blue-600 text-white text-sm rounded hover:bg-blue-700 transition">
+                           class="px-4 py-1.5 text-sm font-medium bg-zinc-700 text-white rounded-lg hover:bg-zinc-800 transition">
                             Editar
                         </a>
 
                         <form action="{{ route('admin.areas.destroy', $area) }}" method="POST"
-                            onsubmit="return confirm('¿Estás seguro de eliminar esta área?');">
+                              onsubmit="return confirm('¿Estás seguro de eliminar esta área?');">
                             @csrf
                             @method('DELETE')
                             <button type="submit"
-                                class="px-3 py-1 bg-red-600 text-white text-sm rounded hover:bg-red-700 transition">
+                                    class="px-4 py-1.5 text-sm font-medium bg-zinc-700 text-white rounded-lg hover:bg-zinc-800 transition">
                                 Eliminar
                             </button>
                         </form>
@@ -76,7 +79,7 @@
                 </div>
             </div>
         @empty
-            <div class="col-span-full text-center text-gray-500">
+            <div class="col-span-full text-center text-zinc-500 dark:text-zinc-300">
                 No hay áreas registradas actualmente.
             </div>
         @endforelse

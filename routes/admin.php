@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\ConveniosController;
 use App\Http\Controllers\Admin\ProgramasController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\InstructivoController;
+use App\Http\Controllers\Admin\ReglamentoController;
 
 Route::middleware(['auth', 'verified', 'isAdmin'])
     ->prefix('admin')
@@ -28,4 +29,7 @@ Route::middleware(['auth', 'verified', 'isAdmin'])
 
         // Instructivos
         Route::resource('instructivos', InstructivoController::class);
+
+        // Reglamentos
+        Route::resource('reglamentos', ReglamentoController::class);
     });

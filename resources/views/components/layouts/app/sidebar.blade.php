@@ -54,8 +54,8 @@
             [
                 'name' => 'Reglamento',
                 'icon' => 'book-open',
-                'url' => route('dashboard'),
-                'current' => request()->routeIs('dashboard.*'),
+                'url' => route('admin.reglamentos.index'),
+                'current' => request()->routeIs('admin.reglamentos.*'),
             ],
             [
                 'name' => 'Instructivos',
